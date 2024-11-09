@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Home from './pages/Home'
 import Header from './components/Header'
+import CreateForm from './pages/CreateForm'
 
 const App = () => {
 
@@ -12,6 +13,7 @@ const App = () => {
       <Header pageTitle={headerTitle} />
       <Routes>
           <Route path='/' element={<Home />} />
+          <Route path='/create' element={<CreateForm />} />
       </Routes>
     </>
   )
