@@ -7,6 +7,15 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
 builder.Services.AddDependencyInjection();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllOrigins",
+        builder => builder
+            .AllowAnyOrigin() 
+            .AllowAnyMethod() 
+            .AllowAnyHeader()); 
+});
+
 
 var app = builder.Build();
 
@@ -20,6 +29,8 @@ if (app.Environment.IsDevelopment())
         options.RoutePrefix = string.Empty; 
     });
 }
+
+app.UseCors("AllowAllOrigins");
 
 app.UseHttpsRedirection();
 app.UseRouting();
